@@ -11,6 +11,7 @@ const UserSchema = new Schema({
         type: String,
         required: 'You must have an email',
         unique: true,
+        //simple regex for checking a valid email format
         match: [/^\S+@\S+\.\S+$/]
     },
     thoughts: [
