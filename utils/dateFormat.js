@@ -1,7 +1,7 @@
-const addDateSuffix = date => {
+const addDateSuf = date => {
     let dateStr = date.toString();
   
-    // get last char of date string
+    // get last character of date string
     const lastChar = dateStr.charAt(dateStr.length - 1);
   
     if (lastChar === '1' && dateStr !== '11') {
@@ -17,10 +17,11 @@ const addDateSuffix = date => {
     return dateStr;
   };
   
-  // function to format a timestamp, accepts the timestamp and an `options` object as optional parameters
+  // function to format timestamp
+  //chose full month name
   module.exports = (
     timestamp,
-    { monthLength = 'short', dateSuffix = true } = {}
+    { monthLength = 'long', dateSuffix = true } = {}
   ) => {
     let months;
   
@@ -62,7 +63,7 @@ const addDateSuffix = date => {
     let dayOfMonth;
   
     if (dateSuffix) {
-      dayOfMonth = addDateSuffix(dateObj.getDate());
+      dayOfMonth = addDateSuf(dateObj.getDate());
     } else {
       dayOfMonth = dateObj.getDate();
     }
