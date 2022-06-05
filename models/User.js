@@ -4,18 +4,14 @@ const UserSchema = new Schema({
     username: {
         type: String,
         unique: true,
-        required: true,
+        required: 'You must have a username',
         trim: true
     },
     email: {
         type: String,
-        required: true,
+        required: 'You must have an email',
         unique: true,
-        //async function, if false Mongoose will consider a validation error
-        validate: {
-            validator: () => Promise.resolve(false),
-            message: 'Email validation failed'
-          }
+        match: [/^\S+@\S+\.\S+$/]
     },
     thoughts: [
         {
@@ -34,7 +30,8 @@ const UserSchema = new Schema({
 {
     toJSON: {
       virtuals: true
-    }
+    },
+    id: false,
   }
 )
 
